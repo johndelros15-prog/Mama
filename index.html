@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Invisible full-screen button to capture the first click -->
+<button id="unlock" style="
+    position:fixed; inset:0; width:100%; height:100%; 
+    background:transparent; border:none; cursor:pointer; z-index:9999;
+"></button>
+    
     <div class="music-control">
         <button id="musicBtn" onclick="toggleMusic()">🎵 Play Music</button>
     </div>
