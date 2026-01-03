@@ -6,6 +6,13 @@ audio.autoplay = true;
 audio.muted    = true;
 audio.volume   = 0.5;
 audio.play().catch(()=>{});
+// One click → unmute and remove the cover
+unlockBtn.addEventListener('click', () => {
+    audio.muted = false;
+    unlockBtn.remove();
+}, {once:true});
+
+/* ===== rest of your existing code ===== */
 
 
 // Toggle button (still works after unlock)
@@ -24,13 +31,7 @@ function toggleMusic() {
     }
 }
 
-// One click → unmute and remove the cover
-unlockBtn.addEventListener('click', () => {
-    audio.muted = false;
-    unlockBtn.remove();
-}, {once:true});
 
-/* ===== rest of your existing code ===== */
 
 // Add floating particles effect
 function createParticle() {
