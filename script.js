@@ -1,22 +1,5 @@
-const audio = document.getElementById('bgMusic');
-const unlockBtn = document.getElementById('unlock');   // ← ADD THIS LINE
-
-// Start muted & playing immediately
-audio.autoplay = true;
-audio.muted    = true;
-audio.volume   = 0.5;
-audio.play().catch(()=>{});
-// One click → unmute and remove the cover
-unlockBtn.addEventListener('click', () => {
-    audio.muted = false;
-    unlockBtn.remove();
-}, {once:true});
-
-/* ===== rest of your existing code ===== */
-
-
-// Toggle button (still works after unlock)
 let isPlaying = true;
+const audio = document.getElementById('bgMusic');
 function toggleMusic() {
     if (isPlaying) {
         audio.pause();
@@ -29,6 +12,7 @@ function toggleMusic() {
         musicBtn.innerHTML = '🔊 Pause Music';
         musicBtn.style.background = 'linear-gradient(45deg, #e74c3c, #f39c12)';
     }
+    isPlaying = !isPlaying;
 }
 
 
