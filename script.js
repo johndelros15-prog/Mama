@@ -1,20 +1,37 @@
-// Background Music Control
-let isPlaying = true;
+// Auto-play instantly (muted) when page loads
 const audio = document.getElementById('bgMusic');
-const musicBtn = document.getElementById('musicBtn');
+audio.volume = 0.5;
+audio.play().catch(e => console.log("Autoplay blocked:", e));
 
+// Unmute on first user interaction (click, scroll, key)
+function unmuteAndPlay() {
+    audio.muted = false;
+    audio.play().catch(e => console.log("Unmute failed:", e));
+    document.removeEventListener('click', unmuteAndPlay);
+    document.removeEventListener('scroll', unmuteAndPlay);
+    document.removeEventListener('keydown', unmuteAndPlay);
+}
+
+// Attach unmute to first interaction
+document.addEventListener('click', unmuteAndPlay);
+document.addEventListener('scroll', unmuteAndPlay);
+document.addEventListener('keydown', unmuteAndPlay);
+
+// Toggle button functionality
+let isPlaying = true;
 function toggleMusic() {
     if (isPlaying) {
         audio.pause();
         musicBtn.innerHTML = '🎵 Play Music';
         musicBtn.style.background = 'linear-gradient(45deg, #ff6b6b, #4ecdc4)';
     } else {
-        audio.play().catch(e => console.log('Audio play failed:', e));
+        audio.play().catch(e => console.log("Play failed:", e));
         musicBtn.innerHTML = '🔊 Pause Music';
         musicBtn.style.background = 'linear-gradient(45deg, #e74c3c, #f39c12)';
     }
     isPlaying = !isPlaying;
 }
+
 
 // Add floating particles effect
 function createParticle() {
