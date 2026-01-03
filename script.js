@@ -7,6 +7,23 @@ audio.muted    = true;
 audio.volume   = 0.5;
 audio.play().catch(()=>{});
 
+
+// Toggle button (still works after unlock)
+let isPlaying = true;
+function toggleMusic() {
+    if (isPlaying) {
+        audio.pause();
+        isPlaying = false;
+        musicBtn.innerHTML = '🎵 Play Music';
+        musicBtn.style.background = 'linear-gradient(45deg, #ff6b6b, #4ecdc4)';
+    } else {
+        audio.play().catch(() => {});
+        isPlaying = true;
+        musicBtn.innerHTML = '🔊 Pause Music';
+        musicBtn.style.background = 'linear-gradient(45deg, #e74c3c, #f39c12)';
+    }
+}
+
 // One click → unmute and remove the cover
 unlockBtn.addEventListener('click', () => {
     audio.muted = false;
