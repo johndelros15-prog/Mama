@@ -1,19 +1,20 @@
-// Auto-play instantly (muted) when page loads
-const audio = document.getElementById('bgMusic');
+// Background Music Control
 let isPlaying = true;
+const audio = document.getElementById('bgMusic');
+const musicBtn = document.getElementById('musicBtn');
+
 function toggleMusic() {
     if (isPlaying) {
         audio.pause();
         musicBtn.innerHTML = '🎵 Play Music';
         musicBtn.style.background = 'linear-gradient(45deg, #ff6b6b, #4ecdc4)';
     } else {
-        audio.play().catch(e => console.log("Play failed:", e));
+        audio.play().catch(e => console.log('Audio play failed:', e));
         musicBtn.innerHTML = '🔊 Pause Music';
         musicBtn.style.background = 'linear-gradient(45deg, #e74c3c, #f39c12)';
     }
     isPlaying = !isPlaying;
 }
-
 
 // Add floating particles effect
 function createParticle() {
@@ -156,4 +157,3 @@ document.addEventListener('DOMContentLoaded', () => {
     addRainbowEffect();
     console.log('🐉 Mama Dragon website loaded! Type "mama" for a special effect!');
 });
-  
