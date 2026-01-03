@@ -1,5 +1,5 @@
 // Background Music Control
-let isPlaying = false;
+let isPlaying = true;
 const audio = document.getElementById('bgMusic');
 const musicBtn = document.getElementById('musicBtn');
 
